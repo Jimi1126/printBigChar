@@ -1,5 +1,6 @@
 const { loop, getChar } = require("./core");
 const bigCharFactory = require("./BigCharFactory");
+const BigChar = require("./BigChar");
 const DEFAULT_SPACE_NUM = 2;
 const DEFAULT_SPACE_CHAR = " ";
 const DEFAULT_ALIGN = "center";
@@ -67,4 +68,7 @@ function printToBigChar(source, fn = console.log, argv = {}) {
   print(newList);
 }
 
-module.exports = printToBigChar;
+BigChar.bigCharFactory = bigCharFactory;
+BigChar.printToBigChar = printToBigChar;
+
+module.exports = BigChar;

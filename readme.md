@@ -1,15 +1,15 @@
 # 字符转换大字符
-平时使用其他架构或者其他项目中，在控制台或日志文件中会出现由多个字符组成项目的名称，看起来很意思。
-但是我们平时开发项目想要这样打印项目名称时，发现拼装繁琐，而且浪费时间。printBigChar能根据特定的规则得到我们想要的字符形状，目前支持26个字母（大小写）。
+平时使用其他架构或者其他项目中，在控制台或日志文件中会出现由多个字符组成项目的名称，看起来有点意思。
+但是我们平时开发项目想要这样打印项目名称时，会发现拼装繁琐，而且浪费时间。printBigChar能根据特定的规则得到我们想要的字符形状，目前支持26个字母（大小写）。
 ## 大字符
-由多个特定字符组成特定形状的字符
+由多个特定字符组成形成特定的形状所代表的字符
 ## 使用
-> npm i printBigChar -save
+> npm i print-big-char -save
 ## node.js
 ```
-const printBigChar = require("printBigChar");
+const { printToBigChar } = require("print-big-char");
 //your project name
-printBigChar("hello world");
+printToBigChar("hello world");
 
 //你将在控制台获取到如下字符串
 // H     H  EEEEEEE  L        L         OOOOO         W   WW   W   OOOOO   RRRRR    L        DDDD   
@@ -22,13 +22,13 @@ printBigChar("hello world");
 ## 大字符结构
 ```
 const DEFAULT_CHAR = "*";   //默认构造字符
-const DEFAULT_BIAS = 0;     //默认偏移数
+const DEFAULT_BIAS = 0;     //默认倾斜度
 const DEFAULT_COL_NUM = 7;  //默认一个大字符占用列数
 /* super class */
 class BigChar {
   constructor() {
     this.char = DEFAULT_CHAR;           // 构造字符
-    this.bias = DEFAULT_BIAS;           // 偏移数
+    this.bias = DEFAULT_BIAS;           // 倾斜度
     this.col_num = DEFAULT_COL_NUM;     // 一个大字符占用列数
     this.position = [];                 // 构造大字符坐标组
     this.print_list = [];               // 构造大字符所用字符集
@@ -38,7 +38,7 @@ class BigChar {
   }
 }
 ```
-一个大字符多个指定的字符通过坐标组标记位置形成形状，其占用列数由col_num指定、占用行数由position列表个数决定。
+一个大字符是由多个指定字符通过坐标组标记位置形成的形状，其占用列数由col_num指定、占用行数由position列表个数决定。
 position是一个二维数组，元素可以是数字以及字符串：
 如大字符“A”的定义：
 ```
@@ -120,9 +120,7 @@ module.exports = bigCharFactory;
 工厂提供大字符结构的注册，大字符构建对象的创建，以及维护大字符构建对象的单例。工厂会根据某一映射规则将要形成大字符的字符映射到对象的构建结构上，然后创建对象并返回。当我们想要的字符在printBigChar中没有时，我们可以通过自定义大字符结构并注册到系统中，从而使用。
 - <span id = "register">注册（扩展）</span>
 ```
-const printToBigChar = require("./index.js");
-const {BigChar} = require("./BigChar");
-const bigCharFactory = require("./BigCharFactory");
+const { printToBigChar, BigChar, bigCharFactory  } = require("print-big-char");
 class BigChar_2 extends BigChar {
   constructor() {
     super();
@@ -162,8 +160,7 @@ let option = {
 示例：
 - 打印间隙为4间隙填充为*号的大字符
 ```
-const printToBigChar = require("./index.js");
-
+const { printToBigChar } = require("print-big-char");
 let printStr = "hello world";
 let option = {
   space_num: 4,    //大字符间的间隙，默认：2
@@ -181,7 +178,7 @@ printToBigChar(printStr, option);
 > 注意：空格将被解析为默认大字符
 - 打印成全由*号形成的大字符
 ```
-const printToBigChar = require("./index.js");
+const { printToBigChar } = require("print-big-char");
 
 let printStr = "hello world";
 let option = {
@@ -198,8 +195,7 @@ printToBigChar(printStr, option);
 ```
 - 改变L的组成字符为=号
 ```
-const printToBigChar = require("./index.js");
-
+const { printToBigChar } = require("print-big-char");
 let printStr = "hello world";
 let option = {
   L: { char: "=" },  //指定大字符构造参数，这将覆盖原本的字符定义
@@ -215,8 +211,7 @@ printToBigChar(printStr, option);
 ```
 - 打印全由*号形成的大字符，但L为=号
 ```
-const printToBigChar = require("./index.js");
-
+const { printToBigChar } = require("print-big-char");
 let printStr = "hello world";
 let option = {
   global_char: "*",  //全局大字符字符填充字符，默认：无
@@ -234,8 +229,7 @@ printToBigChar(printStr, option);
 >此时参数中的字符定义优先级更高
 - 打印居中对齐的大字符（默认）
 ```
-const printToBigChar = require("./index.js");
-
+const { printToBigChar } = require("print-big-char");
 let printStr = "hello world";
 let option = {
   align: "center",
@@ -264,7 +258,7 @@ printToBigChar(printStr, option);
 ```
 - 打印顶点对齐的大字符
 ```
-const printToBigChar = require("./index.js");
+const { printToBigChar } = require("print-big-char");
 
 let printStr = "hello world";
 let option = {
@@ -294,7 +288,7 @@ printToBigChar(printStr, option);
 ```
 - 打印底部对齐的大字符
 ```
-const printToBigChar = require("./index.js");
+const { printToBigChar } = require("print-big-char");
 
 let printStr = "hello world";
 let option = {
@@ -327,7 +321,7 @@ printToBigChar(printStr, option);
 ## 扩展
 参考[工厂注册](#register)
 ## 优化
-目前仅支持26个字母的大写（小写也会转换为大写），后续会加入其他字符包括标点符号，也欢迎大家加入新的字符定义
+目前仅支持26个字母的大写（小写也会转换为大写），后续会加入其他字符包括标点符号，也欢迎加入新的字符定义
 ## 免责声明
-本软件仅用于学习交流使用，禁止用于商业用途，使用本软件所造成的的后果由使用者承担！
+本工具仅用于学习交流使用，禁止用于商业用途，使用本工具所造成的的后果由使用者承担！
 有疑问请 mail to: [xfqing_mid@163.com](mailto:xfqing_mid@163.com)
