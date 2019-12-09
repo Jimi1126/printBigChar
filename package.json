@@ -1,0 +1,17 @@
+{
+  "name": "print-big-char",
+  "version": "1.0.0",
+  "description": "一个将字符串转换为由指定字符形成形成的字符串工具。",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "keywords": [
+    "string",
+    "Transformation",
+    "nodejs",
+    "print"
+  ],
+  "author": "gambler",
+  "license": "ISC"
+}
