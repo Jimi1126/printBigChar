@@ -13,5 +13,13 @@
     "print"
   ],
   "author": "gambler",
-  "license": "ISC"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/so-hentai/printBigChar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/so-hentai/printBigChar/issues"
+  },
+  "homepage": "https://github.com/so-hentai/printBigChar#readme"
 }
