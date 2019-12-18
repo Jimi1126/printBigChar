@@ -1,4 +1,28 @@
-const { printToBigChar, BigChar, bigCharFactory  } = require("./index");
+/**
+ * BigChar测试程序
+ */
+const { printToBigChar, BigChar, bigCharFactory } = require("./index");
+
+let printStr = "hello world";
+let option = {};
+
+// test 默认测试
+printToBigChar(printStr);
+
+// test 打印间隙为4间隙填充为*号的大字符
+option = {
+  space_num:  4,
+  space_char: "*"
+}
+printToBigChar(printStr, option);
+
+//打印成全由*号形成的大字符
+option = {
+  global_char: "*"  //全局大字符字符填充字符，默认：无
+}
+printToBigChar(printStr, option);
+
+// test 新增常规字符
 class BigChar_2 extends BigChar {
   constructor() {
     super();
@@ -15,8 +39,20 @@ class BigChar_2 extends BigChar {
 bigCharFactory.register(BigChar_2);
 printToBigChar("2");
 
-// const fs = require("fs");
-// fs.writeFileSync("test.txt", "//你将在控制台获取到如下字符串\n", "utf-8");
-// printToBigChar(printStr, (str)=> {
-//   fs.appendFileSync("test.txt", "//" + str + "\n", "utf-8");
-// }, option);
+// test 新增特殊字符
+class BigChar_Punc0 extends BigChar {
+  constructor() {
+    super();
+    this.char = "!";
+    this.position = [
+      ["2(2)"],
+      ["2(2)"],
+      ["2(2)"],
+      [],
+      ["2(2)"]
+    ]
+  }
+}
+bigCharFactory.setMap("!", "Punc0");
+bigCharFactory.register(BigChar_Punc0);
+printToBigChar("a!b");

@@ -1,3 +1,14 @@
+/**
+ * 导出模块
+ * 提供：
+ * 1、基础大字符结构定义集
+ * 2、大字符工厂
+ * 3、大字符打印
+ * @author gambler
+ * @data 2019-12-06
+ * @version 1.0.0
+ */
+
 const { loop, getChar } = require("./core");
 const bigCharFactory = require("./BigCharFactory");
 const BigChar = require("./BigChar");
@@ -27,6 +38,7 @@ function printToBigChar(source, fn = console.log, argv = {}) {
     char = char.toUpperCase();
     bigChars.push(bigCharFactory.build(char, option));
   });
+  bigCharFactory.cleanCache(); // 清理缓存，防止新的打印仍用旧的定义对象
   let print_lists = bigChars.map(bigChar => { return bigChar.print_list });
   let max_row_num = print_lists.reduce((prev, cur) => { return cur.length > prev ? cur.length : prev }, 0);
   print_lists.forEach((arr, i) => {

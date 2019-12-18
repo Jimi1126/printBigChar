@@ -7,9 +7,20 @@
 const BigChar = require("./BigChar")
 const { parse } = require("./core")
 
-const _cache = {}
+/**
+ * 缓存区.
+ */
+const _cache = {};
+
+/**
+ * 映射表.
+ */
+const _bigCharMap = {};
 
 class BigCharFactory {
+  setMap(key, val) {
+    _bigCharMap[key] = val;
+  }
   register(builder) {
     try {
       if (!/^BigChar_/.test(builder.name)) {
@@ -27,7 +38,11 @@ class BigCharFactory {
     let bigChar = null;
     option = option || {};
     if (!BigChar["BigChar_" + char]) {
-      bigChar = new (BigChar["BigChar_Default"])();
+      if (BigChar["BigChar_" + _bigCharMap[char]]) {
+        bigChar = new (BigChar["BigChar_" + _bigCharMap[char]])();
+      } else {
+        bigChar = new (BigChar["BigChar_Default"])();
+      }
     } else {
       bigChar = new (BigChar["BigChar_" + char])();
     }
@@ -48,8 +63,10 @@ class BigCharFactory {
   build(char, option) {
     let res = _cache[char];
     if (res) return res;
-    res = _cache[char] = this.create(char, option);
-    return res;
+    return (_cache[char] = this.create(char, option));
+  }
+  cleanCache() {
+    for (let key in _cache) delete _cache[key];
   }
 }
 bigCharFactory = new BigCharFactory();
