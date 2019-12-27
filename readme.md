@@ -330,6 +330,14 @@ printToBigChar(printStr, option);
 <td>内容</td>
 </tr>
 <tr>
+  <td>2019/12/26</td>
+  <td>1.1.5</td>
+  <td>
+    <ol>
+      <li>集成mocha测试</li>
+      <li>集成webpack打包应用</li>
+    </ol>
+  </td>
   <td>2019/12/18</td>
   <td>1.0.2</td>
   <td>

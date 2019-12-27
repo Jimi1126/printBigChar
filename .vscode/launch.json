@@ -7,20 +7,40 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "启动程序",
+      "name": "cur Program",
+      "program": "${file}",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "main",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\index.js"
+      "program": "${workspaceFolder}\\index.js",
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
     },
     {
       "type": "node",
       "request": "launch",
       "name": "test",
-      "skipFiles": [
-        "<node_internals>/**"
+      "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
+      "stopOnEntry": false,
+      "cwd": "${workspaceRoot}",
+      "runtimeArgs": [
+        "--nolazy"
       ],
-      "program": "${workspaceFolder}\\test.js"
+      "env": {
+        "NODE_ENV": "test"
+      }
     }
   ]
 }

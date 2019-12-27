@@ -1,7 +1,7 @@
 /**
  * 创建大字符工厂.
  * @author gambler
- * @data 2019-12-06
+ * @date 2019-12-06
  * @version 1.0.0
  */
 const BigChar = require("./BigChar")
@@ -34,7 +34,7 @@ class BigCharFactory {
       console.error(error);
     }
   }
-  create(char, option) {
+  build(char, option) {
     let bigChar = null;
     option = option || {};
     if (!BigChar["BigChar_" + char]) {
@@ -60,10 +60,10 @@ class BigCharFactory {
     bigChar.parse ? bigChar.parse() : parse(bigChar, option);
     return bigChar;
   }
-  build(char, option) {
+  create(char, option) {
     let res = _cache[char];
     if (res) return res;
-    return (_cache[char] = this.create(char, option));
+    return (_cache[char] = this.build(char, option));
   }
   cleanCache() {
     for (let key in _cache) delete _cache[key];

@@ -5,7 +5,7 @@
  * 2、大字符工厂
  * 3、大字符打印
  * @author gambler
- * @data 2019-12-06
+ * @date 2019-12-06
  * @version 1.0.0
  */
 
@@ -23,7 +23,7 @@ const DEFAULT_ALIGN = "center";
 function printToBigChar(source, fn = console.log, argv = {}) {
   source = new String(source).toString();
   let chars = source.split("");
-  if (arguments.length = 2 && typeof fn == "object") {
+  if (arguments.length == 2 && typeof fn == "object") {
     argv = fn;
     fn = console.log;
   }
@@ -36,7 +36,7 @@ function printToBigChar(source, fn = console.log, argv = {}) {
   let bigChars = [];
   chars.forEach(char => {
     char = char.toUpperCase();
-    bigChars.push(bigCharFactory.build(char, option));
+    bigChars.push(bigCharFactory.create(char, option));
   });
   bigCharFactory.cleanCache(); // 清理缓存，防止新的打印仍用旧的定义对象
   let print_lists = bigChars.map(bigChar => { return bigChar.print_list });

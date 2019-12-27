@@ -1,7 +1,7 @@
 /**
  * 大字符结构集.
  * @author gambler
- * @data 2019-12-06
+ * @date 2019-12-06
  * @version 1.0.0
  */
 const DEFAULT_CHAR = "*";   //默认构造字符

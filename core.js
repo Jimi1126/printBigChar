@@ -1,7 +1,7 @@
 /**
  * 工具集.
  * @author gambler
- * @data 2019-12-06
+ * @date 2019-12-06
  * @version 1.0.0
  */
 
@@ -33,7 +33,7 @@ function getChar(num = 1, char = " ") {
  * 将对应数据结构解析成大字符.
  * @param {*} source 目标对象
  */
-function parse(source, option = {}) {
+function parse(source) {
   if (!source || !source.position || !source.position.length) return;
   for (let i = 0, j = source.position.length; i < j; i++) {
     let line_str = "", positions = source.position[i];

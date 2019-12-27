@@ -105,3 +105,6 @@ dist
 
 # vscode
 .vscode
+
+#.npmignore
+.npmignore

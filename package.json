@@ -1,10 +1,12 @@
 {
   "name": "print-big-char",
-  "version": "1.0.2",
+  "version": "1.1.5",
   "description": "一个将字符串转换为由指定字符形成形成的字符串工具。",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test.js"
+    "build": "webpack --config webpack.config.js",
+    "test": "mocha",
+    "eslint": "eslint ."
   },
   "keywords": [
     "string",
@@ -21,5 +23,17 @@
   "bugs": {
     "url": "https://github.com/so-hentai/printBigChar/issues"
   },
-  "homepage": "https://github.com/so-hentai/printBigChar#readme"
+  "homepage": "https://github.com/so-hentai/printBigChar#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/runtime": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "mocha": "^6.2.2",
+    "node-loader": "^0.6.0"
+  }
 }
