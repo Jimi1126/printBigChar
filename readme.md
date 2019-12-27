@@ -338,6 +338,8 @@ printToBigChar(printStr, option);
       <li>集成webpack打包应用</li>
     </ol>
   </td>
+</tr>
+<tr>
   <td>2019/12/18</td>
   <td>1.0.2</td>
   <td>
