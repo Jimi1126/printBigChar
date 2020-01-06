@@ -17,7 +17,7 @@ describe("工厂模块测试（默认配置）:", () => {
     let obj1 = bigCharFactory.create("A");
     printToBigChar("A", () => { });
     let obj2 = bigCharFactory.create("A");
-    assert.deepEqual(obj1, obj2);
+    assert.notStrictEqual(obj1, obj2);
   });
   it("扩展字符注册", () => {
     class BigChar_2 extends BigChar {
